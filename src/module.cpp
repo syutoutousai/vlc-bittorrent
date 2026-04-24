@@ -17,6 +17,7 @@ You should have received a copy of the GNU General Public License
 along with vlc-bittorrent.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#define restrict __restrict
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif
@@ -31,7 +32,8 @@ along with vlc-bittorrent.  If not, see <http://www.gnu.org/licenses/>.
 
 vlc_module_begin()
     set_shortname("bittorrent")
-    set_category(CAT_INPUT)
+    // set_category(CAT_INPUT)
+    set_subcategory(SUBCAT_INPUT_ACCESS)
     set_subcategory(SUBCAT_INPUT_STREAM_FILTER)
     set_description("Bittorrent metadata access")
     set_capability("stream_directory", 99)
@@ -39,9 +41,9 @@ vlc_module_begin()
 
 #if 1
     add_directory(DLDIR_CONFIG, NULL, "Downloads",
-        "Directory where VLC will put downloaded files.", false)
+        "Directory where VLC will put downloaded files.")
     add_bool(KEEP_CONFIG, false, "Don't delete files",
-        "Don't delete files after download.", true)
+        "Don't delete files after download.")
 #else
     add_directory(DLDIR_CONFIG, NULL, "Downloads",
         "Directory where VLC will put downloaded files.")

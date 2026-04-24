@@ -17,6 +17,7 @@ You should have received a copy of the GNU General Public License
 along with vlc-bittorrent.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#define restrict __restrict
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif
@@ -55,12 +56,12 @@ MetadataReadDir(stream_directory_t* p_directory, input_item_node_t* p_node)
 
     for (auto f : files) {
         std::unique_ptr<char, decltype(&free)> mrl(
-            vlc_stream_extractor_CreateMRL(p_directory, f.first.c_str()), free);
+            vlc_stream_extractor_CreateMRL(p_directory, f.first.c_str(), NULL, 0), free);
         if (!mrl)
             continue;
 
         int ret = vlc_readdir_helper_additem(
-            &rdh, mrl.get(), f.first.c_str(), NULL, ITEM_TYPE_FILE, ITEM_LOCAL);
+            &rdh, mrl.get(), f.first.c_str(), NULL, ITEM_TYPE_FILE, ITEM_LOCAL, NULL);
         if (ret != VLC_SUCCESS)
             msg_Warn(p_directory, "Failed to add %s", mrl.get());
     }

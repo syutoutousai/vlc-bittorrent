@@ -22,6 +22,7 @@ XXX: This file is basically just glue code so vlc can make interruptible
      blocking calls to libtorrent.
 */
 
+#define restrict __restrict
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif

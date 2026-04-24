@@ -17,6 +17,7 @@ You should have received a copy of the GNU General Public License
 along with vlc-bittorrent.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#define restrict __restrict
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif
