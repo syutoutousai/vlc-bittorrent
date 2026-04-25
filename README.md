@@ -2,7 +2,7 @@
 
 ## What is this?
 ## *** for Arch Linux: 
-Replace the PKGBUILD file with the one here for the time being.
+## Replace the PKGBUILD file with the one here for the time being.
 
 With vlc-bittorrent, you can open a **.torrent** file or **magnet link** with VLC and stream any media that it contains.
 
